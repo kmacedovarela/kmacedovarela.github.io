@@ -4,8 +4,10 @@
 :linkattrs:
 :sectnums:
 :icons:
+:toc-title:
 
 ## Table of Contents
+
 toc::[]
 
 ## Introduction
