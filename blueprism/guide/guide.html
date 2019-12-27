@@ -1,7 +1,7 @@
   <html>
     <head>
       <meta charset="utf-8">
-      <title>Integrating Red Hat Process Automation Manager with BluePrism Digital WorkforceSummaryGeneral Notes:Create Repository</title>
+      <title>Integrating Red Hat Process Automation Manager with BluePrism Digital WorkforceSummaryGeneral Notes:</title>
       <style>
         #wrapper {width: 960px; margin: 0 auto;}
         /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -461,54 +461,38 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_introduction">Introduction</h2>
 <div class="sectionbody">
 <div id="__asciidoctor-preview-1__" class="paragraph">
-<p>This guide shows technical details on how to integrate Red Hat Process Automation Manager (RHPAM) with BluePrism. By integrating these platforms the organization can benefit from both worlds: Business Process Automation and Robotic Process Automation.</p>
+<p>This guide contains instructions and best practices for integrating Red Hat Process Automation Manager (RHPAM) with Blue Prism Intelligent RPA Platform, so that both products can work together effectively to automate business operations.</p>
 </div>
 <div id="__asciidoctor-preview-2__" class="paragraph">
-<p>A business automation platform provides tooling that allows  processes and cases authoring based on mature specifications like BPMN2 and CMMN, respectively for processes and cases. It also supports decision automation, based on the DMN specification and also with several other business-friendly ways to automate business rules. Finally, this platforms provides a management and an execution environment, that can gather real-time valuable KPIs to be used by the C-level for decision making.</p>
+<p>RHPAM is a Business Process Management System.  It orchestrates the movement of work through a series of steps in a business process.  For example, it may be used to move an insurance claim through a claims process, ensuring that the claim is routed through the various steps needed to determine its validity, determine a payment, comply with insurance regulations, comply with corporate policies, etc.</p>
 </div>
 <div id="__asciidoctor-preview-3__" class="paragraph">
-<p>With this, the automation of business process and decisioning is not focused on granular processes, on the contrary, it spawns horizontally across the organization areas.</p>
+<p>Blue Prism is a Robotic Process Automation platform.  It enables the work performed at an individual step in a business process to be completed automatically by a software robot, instead of a human worker.  For example, checking that an insurance claim contains all required information, updating a system of record with the claim details, etc.</p>
 </div>
 <div id="__asciidoctor-preview-4__" class="paragraph">
-<p>On the RPA world, we find software which allows the creation of robots to automate manual tasks. These robots can interact with desktop applications, web applications, spreadsheets, e-mail inboxes and many other different tools. This means that any repeatable work mainly executed by a human can be automated, therefore, the execution can be replaced by as many number of robots as needed.</p>
-</div>
-<div id="__asciidoctor-preview-5__" class="paragraph">
-<p>When aligning the usage of an RPA tool with a business automation platform, we expand our digital automation to a scenario where the corporation repeatable work is made efficient and the business process management practice is supported in its entirety.</p>
-</div>
-<div id="__asciidoctor-preview-6__" class="paragraph">
-<p>There are several advantages on this approach:
-- Being able to track the organization functioning across process monitoring that includes robots tasks;
-- Being able to identify bottlenecks on the organization functioning through a business automation platform and taking the action of improving it by using robot automation;
-- Using digital workers to make your process function whenever: including weekends.
-- Be able to easily scale the number of digital workers for seasional process needs;</p>
-</div>
-<div id="__asciidoctor-preview-7__" class="paragraph">
-<p>Knowing this, Red Hat and BluePrism aligned forces to work together and provide even more ways for users to be successful. RHPAM is an open-source platform for intelligent process and decisioning automation. BluePrism, is an RPA tool that provides tool for creating, executing and monitoring robots - Digital Workers - supporting the automation of repeatable tasks.</p>
-</div>
-<div id="__asciidoctor-preview-8__" class="paragraph">
-<p>With this in mind, this document has technical details on how it is possible to use BluePrism digital workers within business processes or cases created in RHPAM to efficiently accomplish business goals.</p>
+<p>Combining a BPM system such as RHPAM with an RPA platform such as Blue Prism confers several advantages, including the ability to automate more of the time consuming and expensive manual labor than would be possible with either product alone.  For more information on the value of combining various business automation technologies see this <a href="https://www.gartner.com/document/3900986">excellent report</a> from Gartner.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_pre_requisites">Pre-requisites</h2>
 <div class="sectionbody">
+<div id="__asciidoctor-preview-5__" class="ulist">
+<ul>
+<li id="__asciidoctor-preview-6__">
+<p>BluePrism 6;</p>
+</li>
+<li id="__asciidoctor-preview-7__">
+<p>Red Hat Process Automation Manager (RHPAM) 7.5 (or higher);</p>
+</li>
+<li id="__asciidoctor-preview-8__">
+<p>Custom BluePrism Task (WIH)</p>
 <div id="__asciidoctor-preview-9__" class="ulist">
 <ul>
 <li id="__asciidoctor-preview-10__">
-<p>BluePrism 6;</p>
-</li>
-<li id="__asciidoctor-preview-11__">
-<p>Red Hat Process Automation Manager (RHPAM) 7.5 (or higher);</p>
-</li>
-<li id="__asciidoctor-preview-12__">
-<p>Custom BluePrism Task (WIH) [2]</p>
-<div id="__asciidoctor-preview-13__" class="ulist">
-<ul>
-<li id="__asciidoctor-preview-14__">
 <p>Source code available at:</p>
 </li>
-<li id="__asciidoctor-preview-15__">
+<li id="__asciidoctor-preview-11__">
 <p>Compiled jar available at:</p>
 </li>
 </ul>
@@ -521,25 +505,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="_blueprism">BluePrism</h2>
 <div class="sectionbody">
-<div id="__asciidoctor-preview-16__" class="paragraph">
+<div id="__asciidoctor-preview-12__" class="paragraph">
 <p>BluePrism is supported on Windows. You can install it on premise or spawn machines in Azure cloud to model and execute your robots. More details can be found at [Insert links here].</p>
 </div>
-<div id="__asciidoctor-preview-17__" class="paragraph">
+<div id="__asciidoctor-preview-13__" class="paragraph">
 <p>Once you have the platform up and running, these is an overview of items to work on:</p>
 </div>
+<div id="__asciidoctor-preview-14__" class="ulist">
+<ul>
+<li id="__asciidoctor-preview-15__">
+<p>Model objects and/or processes that can execute the repeatable task;</p>
+</li>
+<li id="__asciidoctor-preview-16__">
+<p>Expose processes via Web Services API. <em>Use literal encoding [4].</em></p>
+</li>
+<li id="__asciidoctor-preview-17__">
+<p>Configure firewalls to allow access to the host and port where BluePrism is running, which is by default <code>8181</code>;</p>
 <div id="__asciidoctor-preview-18__" class="ulist">
 <ul>
 <li id="__asciidoctor-preview-19__">
-<p>Model objects and/or processes that can execute the repeatable task;</p>
-</li>
-<li id="__asciidoctor-preview-20__">
-<p>Expose processes via Web Services API. <em>Use literal encoding [4].</em></p>
-</li>
-<li id="__asciidoctor-preview-21__">
-<p>Configure firewalls to allow access to the port where BluePrism is running, which is by default <code>8181</code>;</p>
-<div id="__asciidoctor-preview-22__" class="ulist">
-<ul>
-<li id="__asciidoctor-preview-23__">
 <p>If running on Azure, also configure the inbound and outbound network configuration to allow external access to BluePrism machine;</p>
 </li>
 </ul>
@@ -552,44 +536,44 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="_rhpam">RHPAM</h2>
 <div class="sectionbody">
-<div id="__asciidoctor-preview-24__" class="paragraph">
-<p>RHPAM is Java based therefore it can run in all operation systems that currently supports Java. It can either be provisioned on premise or within a Kubernetes-based platform like OpenShift.</p>
+<div id="__asciidoctor-preview-20__" class="paragraph">
+<p>RHPAM is Java based, and can run on several operating system that supports Java like Windows and Linux [<a href="https://access.redhat.com/articles/3405381" class="bare">https://access.redhat.com/articles/3405381</a>]. It can either be provisioned on premise or within a Kubernetes-based platform like OpenShift.</p>
 </div>
-<div id="__asciidoctor-preview-25__" class="paragraph">
+<div id="__asciidoctor-preview-21__" class="paragraph">
 <p>When invoking Digital Workforce within RHPAM processes, communication happens via SOAP [1]. So in order to invoke BluePrism WebService, it is possible either use the default Web Service Task which comes out-of-the-box within RHPAM, or, create a custom task to represent this invocation. In this guide, we will show how to use BluePrism Task[link to repo here], a custom task to accomplish this goal [2].</p>
 </div>
 <div class="sect2">
 <h3 id="_configuring_business_central">Configuring Business Central</h3>
 <div class="sect3">
 <h4 id="_installing_blueprism_task">Installing BluePrism Task</h4>
-<div id="__asciidoctor-preview-26__" class="paragraph">
-<p>In order to use a custom task, first make it available. Here&#8217;s how you can install the BluePrism Task within the authoring environment:</p>
+<div id="__asciidoctor-preview-22__" class="paragraph">
+<p>In order to use a custom task, you first need to make it available. Here’s how you can install the BluePrism Task within the RHPAM authoring environment (Business Central):</p>
 </div>
-<div id="__asciidoctor-preview-27__" class="olist arabic">
+<div id="__asciidoctor-preview-23__" class="olist arabic">
 <ol class="arabic">
-<li id="__asciidoctor-preview-28__">
-<p>Login to Business Central, go to the general settings by selecting the <code>gear</code> icon on the top-right corner menu.</p>
+<li id="__asciidoctor-preview-24__">
+<p>Login to Business Central, go to the general settings by selecting the gear icon on the top-right corner menu.</p>
 </li>
-<li id="__asciidoctor-preview-29__">
-<p>Within the configuration page, select the <code>Service Tasks Administration</code> option.</p>
+<li id="__asciidoctor-preview-25__">
+<p>Within the configuration page, select the Service Tasks Administration option.</p>
 </li>
 </ol>
 </div>
-<div id="__asciidoctor-preview-30__" class="imageblock">
+<div id="__asciidoctor-preview-26__" class="imageblock">
 <div class="content">
 <img src="images/1-service-tasks.png" alt="1 service tasks">
 </div>
 </div>
-<div id="__asciidoctor-preview-31__" class="olist arabic">
+<div id="__asciidoctor-preview-27__" class="olist arabic">
 <ol class="arabic" start="3">
-<li id="__asciidoctor-preview-32__">
+<li id="__asciidoctor-preview-28__">
 <p>Upload the jar package that contains the BluePrism Task.</p>
-<div id="__asciidoctor-preview-33__" class="ulist">
+<div id="__asciidoctor-preview-29__" class="ulist">
 <ul>
-<li id="__asciidoctor-preview-34__">
+<li id="__asciidoctor-preview-30__">
 <p>Click on the <code>Add Service Task</code> button</p>
 </li>
-<li id="__asciidoctor-preview-35__">
+<li id="__asciidoctor-preview-31__">
 <p>Provide the jar contaning the custom task, in this case, the file <code>blueprism-wih-7.23.0.Final-redhat-00003.jar</code>.</p>
 </li>
 </ul>
@@ -597,25 +581,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ol>
 </div>
-<div id="__asciidoctor-preview-36__" class="paragraph">
-<p>The BluePrism Service Task should now be available within the authoring environment. To use it during the process design it is necessary to configure it in the project level.</p>
+<div id="__asciidoctor-preview-32__" class="paragraph">
+<p>The BluePrism Service Task should now be available within the authoring environment. To use the task in the process designer, it is necessary to enable and configure it at the project level.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_adding_blueprism_task_to_a_business_project">Adding BluePrism Task to a Business Project</h4>
-<div id="__asciidoctor-preview-37__" class="paragraph">
-<p>Follow this steps to allow using BluePrism task in a specific project:</p>
+<div id="__asciidoctor-preview-33__" class="paragraph">
+<p>Follow these steps to enable the BluePrism task in a RHPAM project:</p>
 </div>
-<div id="__asciidoctor-preview-38__" class="olist arabic">
+<div id="__asciidoctor-preview-34__" class="olist arabic">
 <ol class="arabic">
-<li id="__asciidoctor-preview-39__">
-<p>In Business Central, go to the projects view, select a space and open the project settings.</p>
-<div id="__asciidoctor-preview-40__" class="ulist">
+<li id="__asciidoctor-preview-35__">
+<p>In Business Central, go to the projects view, select a space, and open the project settings.</p>
+<div id="__asciidoctor-preview-36__" class="ulist">
 <ul>
-<li id="__asciidoctor-preview-41__">
+<li id="__asciidoctor-preview-37__">
 <p>Select the <code>settings</code> tab, and next, <code>Deployments</code>. Locate and select the <code>Work Item  Handlers</code> menu.</p>
 </li>
-<li id="__asciidoctor-preview-42__">
+<li id="__asciidoctor-preview-38__">
 <p>Click on <code>Add Work Item Handler</code>.
 <span class="image"><img src="images/2-project-config.png" alt="2 project config"></span></p>
 </li>
@@ -624,16 +608,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ol>
 </div>
-<div id="__asciidoctor-preview-43__" class="olist arabic">
+<div id="__asciidoctor-preview-39__" class="olist arabic">
 <ol class="arabic" start="3">
-<li id="__asciidoctor-preview-44__">
+<li id="__asciidoctor-preview-40__">
 <p>Input the task (Work Item Handler) configuration. See this example:</p>
-<div id="__asciidoctor-preview-45__" class="ulist">
+<div id="__asciidoctor-preview-41__" class="ulist">
 <ul>
-<li id="__asciidoctor-preview-46__">
+<li id="__asciidoctor-preview-42__">
 <p><strong>Name</strong>: <code>BluePrismWS</code>;</p>
 </li>
-<li id="__asciidoctor-preview-47__">
+<li id="__asciidoctor-preview-43__">
 <p><strong>Value</strong>:</p>
 </li>
 </ul>
@@ -641,27 +625,27 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ol>
 </div>
-<div id="__asciidoctor-preview-48__" class="listingblock">
+<div id="__asciidoctor-preview-44__" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">new com.redhat.demo.BluePrismWSWorkItemHandler(ksession,classLoader,5000,"user","password")</code></pre>
 </div>
 </div>
-<div id="__asciidoctor-preview-49__" class="paragraph">
-<p>On the above task configuration notice that: <code>5000</code> is the request timeout in miliseconds; On the <code>Value</code> field replace the <code>user</code> and <code>password</code> with valid connection credentials for the blueprism web services you are connecting to.</p>
+<div id="__asciidoctor-preview-45__" class="paragraph">
+<p>On the above task configuration notice that: <code>5000</code> is the request timeout in miliseconds; You have to replace the values <code>user</code> and `password`with valid credentials for the blueprims webservices you are connecting to.</p>
 </div>
-<div id="__asciidoctor-preview-50__" class="olist arabic">
+<div id="__asciidoctor-preview-46__" class="olist arabic">
 <ol class="arabic" start="4">
-<li id="__asciidoctor-preview-51__">
-<p>Identify or create the package where the processes will be stored. You can either install the task to be visible for all processes authoring (adding it to the global folder of the project) or just for a specific group of processes. In this guide, we will configure the task for a group of processes under a specific package.</p>
+<li id="__asciidoctor-preview-47__">
+<p>Identify or create the package in which the processes will be stored. You can either install the task to be visible to all processes (adding it to the global folder of the project) or just to a specific group of processes. In this guide, we will configure the task for a group of processes under a specific package.</p>
 </li>
-<li id="__asciidoctor-preview-52__">
+<li id="__asciidoctor-preview-48__">
 <p>Click on <code>import</code> button and choose the package you defined on step 4.</p>
-<div id="__asciidoctor-preview-53__" class="ulist">
+<div id="__asciidoctor-preview-49__" class="ulist">
 <ul>
-<li id="__asciidoctor-preview-54__">
+<li id="__asciidoctor-preview-50__">
 <p>Import the <code>bp-icon.png</code>[#TODO add link] and the <code>BluePrismWS.wid</code>[#TODO add link] files to this package.</p>
 </li>
-<li id="__asciidoctor-preview-55__">
+<li id="__asciidoctor-preview-51__">
 <p>See an example below where the processes would be stored in a package named <code>custom</code>:</p>
 </li>
 </ul>
@@ -669,62 +653,62 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ol>
 </div>
-<div id="__asciidoctor-preview-56__" class="paragraph">
+<div id="__asciidoctor-preview-52__" class="paragraph">
 <p><span class="image"><img src="images/3-import-wid.png" alt="3 import wid"></span></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_using_the_blueprism_task_within_a_process">Using the BluePrism Task within a Process</h4>
-<div id="__asciidoctor-preview-57__" class="paragraph">
-<p>You can now use a BluePrism task to invoke Digital Workers via BluePrism SOAP Web Services.</p>
+<div id="__asciidoctor-preview-53__" class="paragraph">
+<p>You can now use a BluePrism task to invoke Digital Workers via the BluePrism SOAP Web Services.</p>
 </div>
-<div id="__asciidoctor-preview-58__" class="paragraph">
+<div id="__asciidoctor-preview-54__" class="paragraph">
 <p><span class="image"><img src="images/4-blueprism-wih.png" alt="4 blueprism wih"></span></p>
 </div>
-<div id="__asciidoctor-preview-59__" class="paragraph">
-<p>This custom BluePrism task is an extension of the RHPAM <code>WebService Task</code>. More information about it can be found here[#TODO add link].</p>
+<div id="__asciidoctor-preview-55__" class="paragraph">
+<p>This custom BluePrism task is an extension of the RHPAM WebService Task. More information about it can be found here[#TODO add link].</p>
 </div>
-<div id="__asciidoctor-preview-60__" class="paragraph">
-<p>Once you open the task properties <code>Data Assignments</code>, it should display by default the following configurations:</p>
+<div id="__asciidoctor-preview-56__" class="paragraph">
+<p>Once you open the task properties <code>Data Assignments</code>,  it should display the following configurations by default:</p>
 </div>
-<div id="__asciidoctor-preview-61__" class="paragraph">
+<div id="__asciidoctor-preview-57__" class="paragraph">
 <p><span class="image"><img src="images/5-blueprism-wih-parameters.png" alt="5 blueprism wih parameters"></span></p>
 </div>
-<div id="__asciidoctor-preview-62__" class="paragraph">
-<p>See more details about each configuration below. Let&#8217;s consider a task which triggers a SOAP WebService like <code>PrepareHardwareSpecification.wsdl</code>.</p>
+<div id="__asciidoctor-preview-58__" class="paragraph">
+<p>You will find details about each configuration below. Let’s consider a task which triggers a SOAP WebService like <code>PrepareHardwareSpecification.wsdl</code>.</p>
 </div>
-<div id="__asciidoctor-preview-63__" class="ulist">
+<div id="__asciidoctor-preview-59__" class="ulist">
 <ul>
-<li id="__asciidoctor-preview-64__">
+<li id="__asciidoctor-preview-60__">
 <p>Data Inputs and Assignments</p>
-<div id="__asciidoctor-preview-65__" class="ulist">
+<div id="__asciidoctor-preview-61__" class="ulist">
 <ul>
-<li id="__asciidoctor-preview-66__">
+<li id="__asciidoctor-preview-62__">
 <p><strong>Namespace</strong>: Namespace of BluePrism SOAP Service. Example: <code>urn:blueprism:webservice:preparehardwarespecification</code></p>
 </li>
-<li id="__asciidoctor-preview-67__">
+<li id="__asciidoctor-preview-63__">
 <p><strong>Interface</strong>: Interface of BluePrism SOAP Service. Example: <code>PrepareHardwareSpecificationService</code></p>
 </li>
-<li id="__asciidoctor-preview-68__">
+<li id="__asciidoctor-preview-64__">
 <p><strong>Mode</strong>: Can be <code>SYNC</code> or <code>ASYNC</code>.</p>
 </li>
-<li id="__asciidoctor-preview-69__">
+<li id="__asciidoctor-preview-65__">
 <p><strong>Operation</strong>: BluePrism SOAP Service operation to invoke. Example: <code>PrepareHardwareSpecification</code></p>
 </li>
-<li id="__asciidoctor-preview-70__">
+<li id="__asciidoctor-preview-66__">
 <p><strong>Url</strong>: Accessible URL where BluePrism Service is available. Example: <a href="http://myblueprism:8181/ws/PrepareHardwareSpecification?wsdl" class="bare">http://myblueprism:8181/ws/PrepareHardwareSpecification?wsdl</a></p>
 </li>
-<li id="__asciidoctor-preview-71__">
+<li id="__asciidoctor-preview-67__">
 <p><strong>Parameter</strong>: The process variable that will be sent as an input parameter. The <code>Data Type</code> should be set according to the process variable class.</p>
 </li>
 </ul>
 </div>
 </li>
-<li id="__asciidoctor-preview-72__">
+<li id="__asciidoctor-preview-68__">
 <p>Data Outputs and Assignments</p>
-<div id="__asciidoctor-preview-73__" class="ulist">
+<div id="__asciidoctor-preview-69__" class="ulist">
 <ul>
-<li id="__asciidoctor-preview-74__">
+<li id="__asciidoctor-preview-70__">
 <p><strong>Result</strong> : process variable where the engine will store the result once it is received in the response. The <code>Data Type</code> should be set according to the process variable class.</p>
 </li>
 </ul>
@@ -734,101 +718,98 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="sect4">
 <h5 id="_using_complex_java_objects_within_request_and_response">Using Complex Java Objects within Request and Response</h5>
-<div id="__asciidoctor-preview-75__" class="paragraph">
-<p>When working with SOAP integration, PAM can work with automatic object masharling. In order to do that, it is necessary to create the objects which the Web Service expects to receive in the request, and the object in that will be sent back in the response.</p>
+<div id="__asciidoctor-preview-71__" class="paragraph">
+<p>When working with SOAP integration, PAM can work with automatic object marshaling. In order to do that, it is necessary to create the objects which the Web Service expects to receive in the request, and the object in that will be sent back in the response.</p>
 </div>
-<div id="__asciidoctor-preview-76__" class="paragraph">
-<p>To make this creation easier, the developer can use CXF to automatically generate the classes to use during the integration. There is a script named <code>wsconsume.sh</code>[4] which is included in Red Hat JBoss EAP default installation. <em>Red Hat JBoss EAP is the application server generally used to run RHPAM.</em></p>
+<div id="__asciidoctor-preview-72__" class="paragraph">
+<p>To make this creation easier, the developer can use CXF to automatically generate the classes to be used from the BluePrism’s WSDL. There is a script named wsconsume.sh[4] which is included in Red Hat JBoss EAP default installation. <em>Red Hat JBoss EAP is the application server generally used to run RHPAM.</em></p>
 </div>
-<div id="__asciidoctor-preview-77__" class="paragraph">
+<div id="__asciidoctor-preview-73__" class="paragraph">
 <p>See how you can generate the WS Objects using the <code>wsconsume.sh</code> script:</p>
 </div>
-<div id="__asciidoctor-preview-78__" class="paragraph">
-<p>*</p>
-</div>
-<div id="__asciidoctor-preview-79__" class="olist arabic">
+<div id="__asciidoctor-preview-74__" class="olist arabic">
 <ol class="arabic">
-<li id="__asciidoctor-preview-80__">
+<li id="__asciidoctor-preview-75__">
 <p>Once the BluePrism Web Service is available, it is possible to open the terminal and invoke <code>wsconsume.sh</code> to generate the classes. The script can be found under <code>$JBOSS_EAP/bin/wsconsume.sh</code></p>
 </li>
 </ol>
 </div>
-<div id="__asciidoctor-preview-81__" class="listingblock">
+<div id="__asciidoctor-preview-76__" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">wsconsume.sh [options] &lt;wsdl-url&gt;</code></pre>
 </div>
 </div>
-<div id="__asciidoctor-preview-82__" class="paragraph">
+<div id="__asciidoctor-preview-77__" class="paragraph">
 <p>See this example:</p>
 </div>
-<div id="__asciidoctor-preview-83__" class="listingblock">
+<div id="__asciidoctor-preview-78__" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">$JBOSS_HOME/bin/wsconsume.sh -kn http://bpdevelopment:8181/ws/PrepareHardwareSpecification?wsdl</code></pre>
 </div>
 </div>
-<div id="__asciidoctor-preview-84__" class="ulist">
+<div id="__asciidoctor-preview-79__" class="ulist">
 <ul>
-<li id="__asciidoctor-preview-85__">
+<li id="__asciidoctor-preview-80__">
 <p>Where <code>$JBOSS_HOME</code> is the directory where JBoss is installed;</p>
 </li>
-<li id="__asciidoctor-preview-86__">
+<li id="__asciidoctor-preview-81__">
 <p>The parameters used means:</p>
-<div id="__asciidoctor-preview-87__" class="ulist">
+<div id="__asciidoctor-preview-82__" class="ulist">
 <ul>
-<li id="__asciidoctor-preview-88__">
+<li id="__asciidoctor-preview-83__">
 <p><strong>-k</strong>: same as <code>--keep</code> Keep/Generate Java source;</p>
 </li>
-<li id="__asciidoctor-preview-89__">
+<li id="__asciidoctor-preview-84__">
 <p><strong>-n</strong>: same as <code>--nocompile</code> Do not compile generated sources;</p>
 </li>
 </ul>
 </div>
 </li>
-<li id="__asciidoctor-preview-90__">
+<li id="__asciidoctor-preview-85__">
 <p><strong>URL</strong>: should be replaced with the wsdl url, for example <a href="http://bpdevelopment:8181/ws/ShipOrder?wsdl" class="bare">http://bpdevelopment:8181/ws/ShipOrder?wsdl</a>.</p>
 </li>
 </ul>
 </div>
-<div id="__asciidoctor-preview-91__" class="olist arabic">
+<div id="__asciidoctor-preview-86__" class="olist arabic">
 <ol class="arabic" start="2">
-<li id="__asciidoctor-preview-92__">
-<p>A folder with the package structure and respective classes should be generated in `$JBOSS_HOME/bin/output/.</p>
+<li id="__asciidoctor-preview-87__">
+<p>A folder with the package structure and respective classes should be generated in <code>$JBOSS_HOME/bin/output/</code>.</p>
 </li>
-<li id="__asciidoctor-preview-93__">
+<li id="__asciidoctor-preview-88__">
 <p>Import the generated classes related to the wsdl into your business project (<em>Or package it within a <code>jar</code> and reference it as a dependency</em>). The following classes are the necessary ones for this interaction:</p>
-<div id="__asciidoctor-preview-94__" class="ulist">
+<div id="__asciidoctor-preview-89__" class="ulist">
 <ul>
-<li id="__asciidoctor-preview-95__">
+<li id="__asciidoctor-preview-90__">
 <p><code>ObjectFactory.java</code></p>
 </li>
-<li id="__asciidoctor-preview-96__">
+<li id="__asciidoctor-preview-91__">
 <p><code>package-info.java</code></p>
 </li>
-<li id="__asciidoctor-preview-97__">
+<li id="__asciidoctor-preview-92__">
 <p><code>POJOResponse.Java</code></p>
 </li>
-<li id="__asciidoctor-preview-98__">
+<li id="__asciidoctor-preview-93__">
 <p><code>POJO.java</code></p>
 </li>
 </ul>
 </div>
 </li>
-<li id="__asciidoctor-preview-99__">
+<li id="__asciidoctor-preview-94__">
 <p>Once imported to the project, add the respective input and output classes to the task variables <code>Parameter</code> and <code>Result</code>:
 <span class="image"><img src="images/7-bp-wih-req-res-configuration.png" alt="7 bp wih req res configuration"></span></p>
-<div id="__asciidoctor-preview-100__" class="ulist">
+<div id="__asciidoctor-preview-95__" class="ulist">
 <ul>
-<li id="__asciidoctor-preview-101__">
+<li id="__asciidoctor-preview-96__">
 <p>Make sure to select the class type you just generated on the <code>Data Type</code> combo box.</p>
 </li>
-<li id="__asciidoctor-preview-102__">
+<li id="__asciidoctor-preview-97__">
 <p>On the <code>source</code> column:</p>
-<div id="__asciidoctor-preview-103__" class="ulist">
+<div id="__asciidoctor-preview-98__" class="ulist">
 <ul>
-<li id="__asciidoctor-preview-104__">
+<li id="__asciidoctor-preview-99__">
 <p>for the <code>input</code> select the process variable where the input value can be obtained to be sent to BluePrism;</p>
 </li>
-<li id="__asciidoctor-preview-105__">
+<li id="__asciidoctor-preview-100__">
 <p>for the <code>output</code>, select the process variable where the response object received from BluePrism should be stored;</p>
 </li>
 </ul>
@@ -845,45 +826,51 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <h1 id="_summary" class="sect0">Summary</h1>
-<div id="__asciidoctor-preview-106__" class="paragraph">
-<p>In a summary, here are the topics you should remember when creating processes in Red Hat PAM Processes that consumes BluePrism services:</p>
+<div id="__asciidoctor-preview-101__" class="paragraph">
+<p>Here are the topics you should remember when creating Red Hat PAM processes that consumes BluePrism services:</p>
 </div>
-<div id="__asciidoctor-preview-107__" class="olist arabic">
+<div id="__asciidoctor-preview-102__" class="olist arabic">
 <ol class="arabic">
-<li id="__asciidoctor-preview-108__">
+<li id="__asciidoctor-preview-103__">
 <p>Expose BluePrism processes or objects via WebService;</p>
 </li>
-<li id="__asciidoctor-preview-109__">
+<li id="__asciidoctor-preview-104__">
 <p>To use CXF based scripts (<code>wsconsume.sh</code>), BluePrism SOAP WebService should be exposed with literal encoding [3];</p>
 </li>
-<li id="__asciidoctor-preview-110__">
+<li id="__asciidoctor-preview-105__">
+<p>If running on a different machine, BluePrism should be externally accessible (Firewalls should be configured).</p>
+</li>
+<li id="__asciidoctor-preview-106__">
 <p>BluePrism should be accessible from within services running in different machines (Firewalls should be configured).</p>
 </li>
-<li id="__asciidoctor-preview-111__">
+<li id="__asciidoctor-preview-107__">
 <p>The project within Red Hat PAM needs an additional configuration for the service task that invokes SOAP Web Services (or custom service tasks).</p>
 </li>
-<li id="__asciidoctor-preview-112__">
+<li id="__asciidoctor-preview-108__">
 <p>If using automatic marshalling for complex java objects, the classes should be added in the business project or packaged and added as a maven dependency. These classes can be generated with <code>wsconsume.sh</code> script.</p>
 </li>
 </ol>
 </div>
 <h1 id="_general_notes" class="sect0">General Notes:</h1>
-<div id="__asciidoctor-preview-113__" class="ulist">
+<div id="__asciidoctor-preview-109__" class="ulist">
 <ul>
-<li id="__asciidoctor-preview-114__">
+<li id="__asciidoctor-preview-110__">
 <p><strong>[1]</strong> <em>BluePrism Web Services are currently exposed only via SOAP.</em></p>
 </li>
-<li id="__asciidoctor-preview-115__">
+<li id="__asciidoctor-preview-111__">
 <p><strong>[2]</strong> <em>Red Hat supports for RHPAM the creation and usage of custom tasks, although the code within the custom task is not supported. Therefore, the task provided on this guide is for demonstration purposes only and is not officially supported</em>.</p>
 </li>
-<li id="__asciidoctor-preview-116__">
+<li id="__asciidoctor-preview-112__">
 <p><strong>[3]</strong> <em>Due to a known behavior on the designer, this guide instructs to user to manually copy the icon task. This will be improved on next releases. More details can be found in <a href="https://issues.redhat.com/browse/RHPAM-2418" class="bare">https://issues.redhat.com/browse/RHPAM-2418</a>.</em></p>
 </li>
-<li id="__asciidoctor-preview-117__">
+<li id="__asciidoctor-preview-113__">
 <p><strong>[4]</strong> CXF does not support creating classes for Rpc/encoded wsdls. To use it, BluePrism Web Service must be exposed with literal encoding, like represented on the image below:
 <span class="image"><img src="images/6-bp-exposed-ws-literal.png" alt="6 bp exposed ws literal"></span></p>
 </li>
 </ul>
+</div>
+<div id="__asciidoctor-preview-114__" class="paragraph">
+<p>.</p>
 </div>
         </div>
       </div>
