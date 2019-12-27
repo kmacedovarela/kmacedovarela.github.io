@@ -1,8 +1,12 @@
+# Integrating Red Hat Process Automation Manager with BluePrism Digital Workforce
 :scrollbar:
 :toc4:
 :linkattrs:
+:sectnums:
+:icons:
 
-# Integrating Red Hat Process Automation Manager with BluePrism Digital Workforce
+## Table of Contents
+toc::[]
 
 ## Introduction
 
@@ -175,5 +179,3 @@ Here are the topics you should remember when creating Red Hat PAM processes that
 * *[3]* _Due to a known behavior on the designer, this guide instructs to user to manually copy the icon task. This will be improved on next releases. More details can be found in https://issues.redhat.com/browse/RHPAM-2418._
 * *[4]* CXF does not support creating classes for Rpc/encoded wsdls. To use it, BluePrism Web Service must be exposed with literal encoding, like represented on the image below:
 image:images/6-bp-exposed-ws-literal.png[]
-
-.
