@@ -22,12 +22,12 @@ Combining a BPM system such as RHPAM with an RPA platform such as Blue Prism con
 
 ## Pre-requisites
 
-* BluePrism 6;
+* Blue Prism 6;
 * Red Hat Process Automation Manager (RHPAM) 7.5 (or higher);
-* Custom BluePrism Task (WIH)
-** Downloadable files available in: https://github.com/kmacedovarela/kmacedovarela.github.io/tree/master/blueprism/guide/resources[BluePrism Task]
+* Custom Blue Prism Task (WIH)
+** Downloadable files available in: https://github.com/kmacedovarela/kmacedovarela.github.io/tree/master/blueprism/guide/resources[Blue Prism Task]
 
-## BluePrism
+## Blue Prism
 
 BluePrism is supported on Windows. You can install it on premise or spawn machines in Azure cloud to model and execute your robots. More details can be found at https://digitalexchange.blueprism.com/dx/entry/3439/solution/blue-prism-on-azure-marketplace[Blue Prism on Azure Marketplace].
 
