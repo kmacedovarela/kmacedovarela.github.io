@@ -29,26 +29,26 @@ Combining a BPM system such as RHPAM with an RPA platform such as Blue Prism con
 
 ## Blue Prism
 
-BluePrism is supported on Windows. You can install it on premise or spawn machines in Azure cloud to model and execute your robots. More details can be found at https://digitalexchange.blueprism.com/dx/entry/3439/solution/blue-prism-on-azure-marketplace[Blue Prism on Azure Marketplace].
+Blue Prism is supported on Windows. You can install it on premise or spawn machines in Azure cloud to model and execute your robots. More details can be found at https://digitalexchange.blueprism.com/dx/entry/3439/solution/blue-prism-on-azure-marketplace[Blue Prism on Azure Marketplace].
 
 Once you have the platform up and running, these is an overview of items to work on:
 
 - Model objects and/or processes that can execute the repeatable task;
 - Expose processes via Web Services API. _Use literal encoding [4]._
-- Configure firewalls to allow access to the host and port where BluePrism is running, which is by default `8181`;
-** If running on Azure, also configure the inbound and outbound network configuration to allow external access to BluePrism machine;
+- Configure firewalls to allow access to the host and port where Blue Prism is running, which is by default `8181`;
+** If running on Azure, also configure the inbound and outbound network configuration to allow external access to Blue Prism machine;
 
 ## RHPAM
 
 RHPAM is Java based, and can run on several operating system that supports Java like Windows and Linux [https://access.redhat.com/articles/3405381]. It can either be provisioned on premise or within a Kubernetes-based platform like OpenShift.
 
-When invoking Digital Workforce within RHPAM processes, communication happens via HTTP SOAP [1]. So in order to invoke BluePrism WebService, it is possible either use the default Web Service Task which comes out-of-the-box within RHPAM, or, create a custom task to represent this invocation. In this guide, we will show how to use  https://github.com/kmacedovarela/blueprism-wih[BluePrism Task], a custom task to accomplish this goal [2].
+When invoking Digital Workforce within RHPAM processes, communication happens via HTTP SOAP [1]. So in order to invoke Blue Prism WebService, it is possible either use the default Web Service Task which comes out-of-the-box within RHPAM, or, create a custom task to represent this invocation. In this guide, we will show how to use  https://github.com/kmacedovarela/blueprism-wih[Blue Prism Task], a custom task to accomplish this goal [2].
 
 ### Configuring Business Central
 
-#### Installing BluePrism Task
+#### Installing Blue Prism Task
 
-In order to use a custom task, you first need to make it available. Here’s how you can install the BluePrism Task within the RHPAM authoring environment (Business Central):
+In order to use a custom task, you first need to make it available. Here’s how you can install the Blue Prism Task within the RHPAM authoring environment (Business Central):
 
 1. Login to Business Central, go to the general settings by selecting the gear icon on the top-right corner menu.
 2. Within the configuration page, select the Service Tasks Administration option.
@@ -56,17 +56,17 @@ In order to use a custom task, you first need to make it available. Here’s how
 image::images/1-service-tasks.png[]
 
 [start=3]
-3. Upload the jar package that contains the BluePrism Task.
+3. Upload the jar package that contains the Blue Prism Task.
 
 * Click on the `Add Service Task` button
-* Provide the jar contaning the BluePrism Task, in this case, the file https://github.com/kmacedovarela/kmacedovarela.github.io/tree/master/blueprism/guide/resources[`blueprism-wih-7.23.0.Final.jar`].
+* Provide the jar contaning the Blue Prism Task, in this case, the file https://github.com/kmacedovarela/kmacedovarela.github.io/tree/master/blueprism/guide/resources[`blueprism-wih-7.23.0.Final.jar`].
 [#TODO check the error that is ocurring on pam 750 18:50:28,212 ERROR [io.undertow.request] (default task-9) UT005023: Exception handling request to /business-central/maven2: java.lang.RuntimeException: org.eclipse.aether.deployment.DeploymentException: Failed to deploy artifacts: Could not transfer artifact org.jbpm.contrib:blueprism-wih:jar:7.23.0.Final-redhat-00003 from/to jboss-releases-repository (https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/): repository.jboss.org]
 
-The BluePrism Service Task should now be available within the authoring environment. To use the task in the process designer, it is necessary to enable and configure it at the project level.
+The Blue Prism Service Task should now be available within the authoring environment. To use the task in the process designer, it is necessary to enable and configure it at the project level.
 
-#### Adding BluePrism Task to a Business Project
+#### Adding Blue Prism Task to a Business Project
 
-Follow these steps to enable the BluePrism task in a RHPAM project:
+Follow these steps to enable the Blue Prism task in a RHPAM project:
 
 1. In Business Central, go to the projects view, select a space, and open the project settings.
 *  Select the `settings` tab, and next, `Deployments`. Locate and select the `Work Item  Handlers` menu.
@@ -76,10 +76,10 @@ image:images/2-project-config.png[]
 [start=3]
 3. Input the task (Work Item Handler) configuration. See this example:
 
-* *Name*: `BluePrismWS`;
+* *Name*: `Blue PrismWS`;
 * *Value*:
 ```
-new com.redhat.demo.BluePrismWSWorkItemHandler(ksession,classLoader,5000,"user","password")
+new com.redhat.demo.Blue PrismWSWorkItemHandler(ksession,classLoader,5000,"user","password")
 ```
 On the above task configuration notice that: `5000` is the request timeout in miliseconds; You have to replace the values `user` and `password`with valid credentials for the blueprims webservices you are connecting to.
 
@@ -87,18 +87,18 @@ On the above task configuration notice that: `5000` is the request timeout in mi
 4. Identify or create the package in which the processes will be stored. You can either install the task to be visible to all processes (adding it to the global folder of the project) or just to a specific group of processes. In this guide, we will configure the task for a group of processes under a specific package.
 
 5. Click on `import` button and choose the package you defined on step 4.
-* Import the `bp-icon.png`[#TODO add link] and the `BluePrismWS.wid`[#TODO add link] files to this package.
+* Import the `bp-icon.png`[#TODO add link] and the `Blue PrismWS.wid`[#TODO add link] files to this package.
 * See an example below where the processes would be stored in a package named `custom`:
 
 image:images/3-import-wid.png[]
 
-#### Using the BluePrism Task within a Process
+#### Using the Blue Prism Task within a Process
 
-You can now use a BluePrism task to invoke Digital Workers via the BluePrism SOAP Web Services.
+You can now use a Blue Prism task to invoke Digital Workers via the Blue Prism SOAP Web Services.
 
 image:images/4-blueprism-wih.png[]
 
-This custom BluePrism task is an extension of the RHPAM WebService Task. More information about it can be found github of the https://github.com/redhat-ba-partners/blueprism-wih[BluePrism Task source code].
+This custom Blue Prism task is an extension of the RHPAM WebService Task. More information about it can be found github of the https://github.com/redhat-ba-partners/blueprism-wih[Blue Prism Task source code].
 
 Once you open the task properties `Data Assignments`,  it should display the following configurations by default:
 
@@ -107,11 +107,11 @@ image:images/5-blueprism-wih-parameters.png[]
 You will find details about each configuration below. Let’s consider a task which triggers a SOAP WebService like `PrepareHardwareSpecification.wsdl`.
 
 * Data Inputs and Assignments
-** *Namespace*: Namespace of BluePrism SOAP Service. Example: `urn:blueprism:webservice:preparehardwarespecification`
-** *Interface*: Interface of BluePrism SOAP Service. Example: `PrepareHardwareSpecificationService`
+** *Namespace*: Namespace of Blue Prism SOAP Service. Example: `urn:blueprism:webservice:preparehardwarespecification`
+** *Interface*: Interface of Blue Prism SOAP Service. Example: `PrepareHardwareSpecificationService`
 ** *Mode*: Can be `SYNC` or `ASYNC`.
-** *Operation*: BluePrism SOAP Service operation to invoke. Example: `PrepareHardwareSpecification`
-** *Url*: Accessible URL where BluePrism Service is available. Example: http://myblueprism:8181/ws/PrepareHardwareSpecification?wsdl
+** *Operation*: Blue Prism SOAP Service operation to invoke. Example: `PrepareHardwareSpecification`
+** *Url*: Accessible URL where Blue Prism Service is available. Example: http://myblueprism:8181/ws/PrepareHardwareSpecification?wsdl
 ** *Parameter*: The process variable that will be sent as an input parameter. The `Data Type` should be set according to the process variable class.
 
 * Data Outputs and Assignments
@@ -124,13 +124,13 @@ When exchanging data via HTTP with a SOAP Web Service, services can send/receive
 - simple types i.e., `String` and `Integer`, or
 - complex types i.e., POJOs like Person or Order.
 
-Considering the scenario of consuming BluePrism endpoints, we should use a top-down approach for the consumer development. In other words, we should automatically generate the Java classes that adhere to the existing XML Schema and WSDL.
+Considering the scenario of consuming Blue Prism endpoints, we should use a top-down approach for the consumer development. In other words, we should automatically generate the Java classes that adhere to the existing XML Schema and WSDL.
 
 RHPAM runs on top of JBoss EAP. EAP provides a script named `wsconsume.sh`[4] which is based on https://cxf.apache.org/docs/overview.html[Apache CXF]. This script is a facilitator that, based on JAX-WS,  generates the required classes to communicate with an existing WSDL.
 
 If you intend to exchange data with objects that holds more than one attribute, you will need to generate the wrapper classes. If this is the case, this is how to generate the objects using the `wsconsume.sh` script:
 
-1. Once the BluePrism Web Service is available, open the command line and invoke `wsconsume.sh` to generate the classes.
+1. Once the Blue Prism Web Service is available, open the command line and invoke `wsconsume.sh` to generate the classes.
 
 ```
 $JBOSS_EAP/bin/wsconsume.sh [options] <wsdl-url>
@@ -163,26 +163,26 @@ image:images/7-bp-wih-req-res-configuration.png[]
 * Make sure to select the class type you just generated on the `Data Type` combo box.
 
 * On the `source` column:
-** for the `input` select the process variable where the input value can be obtained to be sent to BluePrism;
-** for the `output`, select the process variable where the response object received from BluePrism should be stored;
+** for the `input` select the process variable where the input value can be obtained to be sent to Blue Prism;
+** for the `output`, select the process variable where the response object received from Blue Prism should be stored;
 
 # Summary
 
-Here are the topics you should remember when creating Red Hat PAM processes that consumes BluePrism services:
+Here are the topics you should remember when creating Red Hat PAM processes that consumes Blue Prism services:
 
-1. Expose BluePrism processes or objects via WebService;
-2. To use CXF based scripts (`wsconsume.sh`), BluePrism SOAP WebService should be exposed with `literal encoding` [3];
-3. If running on a different machine, BluePrism should be externally accessible (Firewalls should be configured).
-5. The project within Red Hat PAM needs configuration for the BluePrism Task (service task that invokes SOAP Web Services).
+1. Expose Blue Prism processes or objects via WebService;
+2. To use CXF based scripts (`wsconsume.sh`), Blue Prism SOAP WebService should be exposed with `literal encoding` [3];
+3. If running on a different machine, Blue Prism should be externally accessible (Firewalls should be configured).
+5. The project within Red Hat PAM needs configuration for the Blue Prism Task (service task that invokes SOAP Web Services).
 6. If using complex java objects, the classes should be generated based on the WSDL. It should be added to the business project or packaged in a `jar` and configured as a maven dependency. _EAP provides a facilitator to generate the classes, the `wsconsume.sh` script_.
 
 # General Notes:
 
-*[1]* _BluePrism Web Services are currently exposed only via SOAP._
+*[1]* _Blue Prism Web Services are currently exposed only via SOAP._
 
 *[2]* _Red Hat supports for RHPAM the creation and usage of custom tasks, although the code within the custom task is not supported. Therefore, the task provided on this guide is for demonstration purposes only and is not officially supported_.
 
 *[3]* _Due to a known behavior on the designer, this guide instructs to user to manually copy the icon task. This will be improved on next releases. More details can be found in https://issues.redhat.com/browse/RHPAM-2418._
 
-*[4]* CXF does not support generating classes for `RPC/encoded WSDL. To automatically generate classes using CXF, BluePrism Web Service must be exposed with literal encoding, like represented on the image below:
+*[4]* CXF does not support generating classes for `RPC/encoded WSDL. To automatically generate classes using CXF, Blue Prism Web Service must be exposed with literal encoding, like represented on the image below:
 image:images/6-bp-exposed-ws-literal.png[]
